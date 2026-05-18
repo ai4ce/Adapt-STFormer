@@ -1,0 +1,32 @@
+FROM python:3.10-slim
+
+# Install system packages
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    git \
+    curl \
+    libgl1 \
+    && rm -rf /var/lib/apt/lists/*
+
+# Upgrade pip and install Python packages
+RUN pip install --upgrade pip && \
+    pip install jupyterlab numpy torch==2.4.0 torchvision pandas matplotlib
+
+# Install mmcv (CPU version for torch 2.4.x)
+RUN pip install mmcv==2.2.0 \
+    -f https://download.openmmlab.com/mmcv/dist/cpu/torch2.4/index.html
+
+RUN apt-get update && apt-get install -y libglib2.0-0 && rm -rf /var/lib/apt/lists/*
+
+RUN pip install faiss-cpu tqdm thop scikit-learn
+
+RUN pip install einops h5py timm
+
+# Set working directory (can be overridden at runtime)
+WORKDIR /workspace
+
+# Expose Jupyter Lab port
+EXPOSE 8888
+
+# Run Jupyter Lab
+CMD ["jupyter", "lab", "--ip=0.0.0.0", "--no-browser", "--allow-root", "--NotebookApp.token=''"]

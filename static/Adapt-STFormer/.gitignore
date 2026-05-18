@@ -1,0 +1,38 @@
+*.ipynb*
+*__pycache__/*
+venv/
+*.out*
+*.joblib
+myenv/
+local_data/
+.ruff_cache
+__pycache__
+scratch/yl9727/data/DINO-Mix/models/backbones/facebookresearch_dinov2_main/dinov2_vitl14_pretrain.pth
+data/
+models/
+output/
+create_images_np/
+checkpoints/
+assets/
+.vscode/
+# test
+logs/
+# Include svpr/models/
+!tvg/models/
+!svpr/models/
+
+# Ensure all files under svpr/models/ are included
+!tvg/models/**
+!svpr/models/**
+!svpr/
+
+
+*.pyc
+
+nuscene_incorrect_test_images/
+oxford_hard_incorrect_test_images/
+svpr/models/.ipynb_checkpoints/
+
+*.pth
+
+.vscode
