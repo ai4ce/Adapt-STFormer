@@ -7,6 +7,12 @@ ext_module = ext_loader.load_ext(
     "_ext", ["ms_deform_attn_backward", "ms_deform_attn_forward"]
 )
 
+# DISCLAIMER: This implementation uses the Deformable Transformer Encoder (DTE) mechanism in a way that
+# deviates from the original intended usage. While this approach may be considered "incorrect" 
+# according to the original design specifications, our experiments showed that it achieved 
+# better performance results for our specific use case. The modification involves manipulating
+# the sampling locations and attention weights in a non-standard way.
+
 class MultiScaleDeformableAttnFunction_fp32(Function):
     @staticmethod
     @custom_fwd(cast_inputs=torch.float32)
