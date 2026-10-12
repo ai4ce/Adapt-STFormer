@@ -11,7 +11,7 @@ Adapt-STFormer/sbatch_files/train/cct_adapt_stformer_train.sbatch
 
 ## Dataset Generation
 
-This repository includes dataset generation scripts for **nuScenes only**. The remaining datasets (Oxford RobotCar, Nordland) can be found in other repositories as they were previously implemented elsewhere.
+This repository includes dataset generation scripts for **nuScenes only**. The remaining dataset generation code (Oxford RobotCar, Nordland) can be found in other repositories as they were previously implemented elsewhere.
 
 ## Understanding structFiles
 
